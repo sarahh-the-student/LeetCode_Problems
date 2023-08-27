@@ -1,0 +1,46 @@
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        # Understanding:
+# The problem is to find the length of the longest substring that contains
+# no repeating characters. We'll use a sliding window approach to solve
+# this problem efficiently.
+
+# Planning:
+# 1. Initialize two pointers and a set.
+# 2. Move the end pointer to extend the window, checking for unique characters.
+# 3. If a character repeats, move the start pointer to make it unique again.
+# 4. Keep track of the max_length seen so far.
+
+    
+        # Initialize variables
+        n = len(s)
+        if n == 0:
+            return 0  # Edge case: empty string
+        
+        # Coding: Initialize two pointers, a set to store unique characters,
+        # and a variable to keep track of max length
+        start = 0
+        end = 0
+        unique_chars = set()
+        max_length = 0
+        
+        # Coding: Loop through the string
+        while end < n:
+            # Extend the 'end' of the window
+            if s[end] not in unique_chars:
+                unique_chars.add(s[end])
+                end += 1
+                
+                # Update the max_length if needed
+                max_length = max(max_length, end - start)
+                
+            else:  # Shrink the 'start' of the window
+                unique_chars.remove(s[start])
+                start += 1
+        
+        # Return the length of the longest substring without repeating characters
+        return max_length
