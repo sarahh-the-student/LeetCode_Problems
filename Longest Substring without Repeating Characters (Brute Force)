@@ -1,0 +1,23 @@
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        #initializing the substring and maxstring values
+        subString = ""
+        maxString = len(subString)
+
+        #iterate through the string
+        for i in range(len(s)):
+            #check if unique chars are in string
+            if s[i] not in subString:
+                subString+=s[i]
+            else:
+                #if a repeated char, check if substring length > maxString
+                if len(subString) > maxString:
+                    maxString = len(subString)
+                #if not longer than max, clear substring and start over
+                subString = ""
+                subString+= s[i]
+        return maxString
