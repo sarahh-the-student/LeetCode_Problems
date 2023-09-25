@@ -1,0 +1,48 @@
+class Solution(object):
+    def reverseVowels(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        vowels = ['A','E','I','O','U','a','e','i','o','u']
+        #UMPIRE Method
+        #Understand
+        # if i have a string, s, and it has vowels, reverse the vowels in the order they appear
+
+        #Match
+        #use an array to store vowels
+        #reverse array
+        #insert the vowels back in correct indexes
+
+        #Plan
+        
+        #enumerate string, save vowels in an array and save indexes in separate array
+        #reverse vowels array
+        #insert letters of string and place back vowels
+
+        #Implement
+        vowels_to_reverse = []
+        indexes = []
+        new_s = ''
+        for num, letter in enumerate(s):
+            if letter in vowels:
+                #print(letter + ' is at index ' +  str(num))
+                indexes.append(num)
+                vowels_to_reverse.append(letter)
+                #new_s = new_s.replace(letter,'',1)
+        vowels_to_reverse.reverse()
+        for i in range(len(s)):
+            if s[i] in vowels:
+                new_s +=vowels_to_reverse[0]
+                vowels_to_reverse.pop(0)
+            else:
+                new_s+=s[i]
+        return new_s
+        #Review
+
+
+        #Evaluate
+        #Review
+
+
+        #Evaluate
